@@ -1,5 +1,5 @@
 import { useState } from "react";
-import baseURL from "./axiosBase";
+import baseURL from "../config/axiosBase";
 import { useNavigate } from "react-router-dom";
 
 const TableData = (props) => {
@@ -29,7 +29,10 @@ const TableData = (props) => {
       }
       props.deleteItem(data.id);
     } catch (error) {
-      console.log("Error while deleting the alert", error.message);
+      console.log(
+        "Error while deleting the alert",
+        error.response.data.message,
+      );
     }
   }
 

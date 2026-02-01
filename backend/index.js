@@ -34,7 +34,9 @@ app.get("/api/alerts", (req, res) => {
     }
     res.status(200).send(updatedData);
   } catch (error) {
-    res.send(error.message);
+    res
+      .status(500)
+      .send({ message: "Error from server while fetching alerts" });
     console.log(error.message);
   }
 });
@@ -48,7 +50,9 @@ app.post("/api/alerts", validator, (req, res) => {
     console.log("Data added");
     res.status(201).send(demoData);
   } catch (error) {
-    res.send(error.message);
+    res
+      .status(500)
+      .send({ message: "Error from server while creating new alert" });
     console.log(error.message);
   }
 });
@@ -65,6 +69,7 @@ app.put("/api/alerts/:id", validator, (req, res) => {
     res.sendStatus(200);
     console.log(updatedItem);
   } catch (error) {
+    res.status(500).send({ message: "Error from server while updating alert" });
     console.log("Error while updating from Server", error.message);
   }
 });
@@ -79,6 +84,7 @@ app.delete("/api/alerts/:id", (req, res) => {
     res.status(200).send(demoData);
     console.log("Alert Deleted ");
   } catch (error) {
+    res.status(500).send({ message: "Error from server while deleting alert" });
     console.log("Error while deleting alert", error.message);
   }
 });

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import baseURL from "./axiosBase";
+import baseURL from "../config/axiosBase";
 
 const CreatePage = () => {
   const [country, setCountry] = useState("");

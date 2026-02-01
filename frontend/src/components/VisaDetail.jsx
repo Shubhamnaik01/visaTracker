@@ -1,5 +1,5 @@
 import TableData from "./TableData";
-import baseURL from "./axiosBase";
+import baseURL from "../config/axiosBase";
 import { useState, useEffect } from "react";
 
 const VisaDetail = () => {
@@ -23,10 +23,15 @@ const VisaDetail = () => {
       const result = await baseURL.get(url);
       setVisaData(result.data);
     } catch (error) {
-      console.log("Error While fetching alerts :", error.message);
+      console.log("Error While fetching alerts :", error.response.data.message);
     }
   }
 
+  function resetFilters() {
+    getAlerts();
+    setFilter("");
+    setFilterValue("");
+  }
   function handleSave() {
     setFilterStatus(!filterStatus);
     setSaveStatus(!save);
@@ -44,9 +49,6 @@ const VisaDetail = () => {
     getAlerts(filter, filterValue);
   }, [save]);
 
-  console.log(filter);
-  console.log(filterValue);
-
   return (
     <div className="table-container">
       <table className="visa-table">
@@ -63,6 +65,11 @@ const VisaDetail = () => {
                 <button className="table-filter" onClick={handleSave}>
                   {filterStatus ? "Save" : "Filter"}
                 </button>
+                {!filterStatus && (
+                  <button className="reset-filter" onClick={resetFilters}>
+                    Reset
+                  </button>
+                )}
                 {filterStatus && (
                   <select
                     name="filter"

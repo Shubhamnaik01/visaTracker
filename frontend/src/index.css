@@ -247,6 +247,19 @@
   font-size: 0.8rem;
 }
 
+.reset-filter {
+  width: 50px;
+  height: 20px;
+  /* margin: 0 auto; */
+  background-color: var(--text-color);
+  color: var(--basic-background);
+  border: solid 1px var(--basic-background);
+  border-radius: 5px;
+  font-family: var(--basic-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
 .filter-select {
   display: inline-block;
 }
