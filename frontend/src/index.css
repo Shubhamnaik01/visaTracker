@@ -164,6 +164,53 @@
   font-size: 0.95rem;
 }
 
+.table-status-data {
+  display: flex;
+  justify-content: space-between;
+  /* display: inline;
+  width: 100px; */
+}
+
+.table-status-data button {
+  width: 50px;
+  height: 20px;
+  display: inline;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  background-color: var(--basic-background);
+  color: var(--text-color);
+  border: solid 1px var(--basic-background);
+  border-radius: 5px;
+  font-family: var(--basic-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.table-time {
+  display: inline-block;
+  width: 50%;
+}
+
+.table-delete-container {
+  display: inline-block;
+  width: 40%;
+}
+
+.table-delete-container button {
+  width: 50px;
+  height: 20px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  background-color: var(--basic-background);
+  color: var(--text-color);
+  border: solid 1px var(--basic-background);
+  border-radius: 5px;
+  font-family: var(--basic-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
 /* Hover effect for rows */
 .visa-table tbody tr:hover {
   background-color: #7a7c7d5c;

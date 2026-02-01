@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosbaseUrl from "./axiosBase";
-import axios from "axios";
+import baseURL from "./axiosBase";
 
 const CreatePage = () => {
   const [country, setCountry] = useState("");
@@ -15,9 +14,26 @@ const CreatePage = () => {
     navigate("/");
   }
 
-  function handleClick() {
-    const visaData = {};
-    const result = axios.post("/api/create");
+  async function handleClick(e) {
+    try {
+      e.preventDefault();
+      const visaData = {
+        country,
+        city,
+        status,
+        type,
+        createdAt: new Date().toISOString(),
+      };
+
+      const result = await baseURL.post("/alerts", visaData);
+      if (result.status == 201) {
+        navigate("/");
+        console.log(result.data);
+      }
+      console.log("Post created Status Code, ", result.status);
+    } catch (error) {
+      console.log("Error while creating alert :", error.message);
+    }
   }
 
   return (
@@ -29,7 +45,11 @@ const CreatePage = () => {
             Back to Visa
           </button>
         </div>
-        <form>
+        <form
+          onSubmit={(e) => {
+            handleClick(e);
+          }}
+        >
           <div className="form-fields">
             <label>
               <span className="label-text">Country :</span>
