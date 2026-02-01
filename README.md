@@ -125,3 +125,7 @@ Runs on http://localhost:5173
 - Error handling
 
 - Data flow and state updates across components
+
+## Note
+
+- A small set of preloaded (hardcoded) alert data is included to demonstrate listing, filtering, and update functionality on initial load.
