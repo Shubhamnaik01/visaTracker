@@ -4,13 +4,16 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import { v4 as createID } from "uuid";
 import validator from "./validator.js";
+import dotenv from "dotenv";
 
 const app = express();
-const port = 2000;
+
+dotenv.config();
 
 app.use(cors());
 app.use(bodyParser.json());
 
+const port = process.env.port;
 app.get("/api/alerts", (req, res) => {
   try {
     const country = req.query.country;
