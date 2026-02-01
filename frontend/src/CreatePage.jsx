@@ -32,7 +32,7 @@ const CreatePage = () => {
       }
       console.log("Post created Status Code, ", result.status);
     } catch (error) {
-      console.log("Error while creating alert :", error.message);
+      console.log("Error while creating alert :", error.response.data.message);
     }
   }
 

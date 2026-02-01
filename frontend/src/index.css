@@ -159,7 +159,7 @@
 
 .visa-table td {
   padding: 12px 15px;
-  border-bottom: 1px solid #edf2f7;
+  /* border-bottom: 1px solid #edf2f7; */
   color: #4a5568;
   font-size: 0.95rem;
 }
@@ -167,6 +167,7 @@
 .table-status-data {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   /* display: inline;
   width: 100px; */
 }
@@ -174,9 +175,8 @@
 .table-status-data button {
   width: 50px;
   height: 20px;
-  display: inline;
-  margin: 0 auto;
-  margin-bottom: 10px;
+  /* display: inline-block; */
+  margin: auto 0;
   background-color: var(--basic-background);
   color: var(--text-color);
   border: solid 1px var(--basic-background);
@@ -186,6 +186,15 @@
   font-size: 0.8rem;
 }
 
+.status-input {
+  width: 60px;
+  height: 20px;
+}
+.status-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .table-time {
   display: inline-block;
   width: 50%;
@@ -211,7 +220,48 @@
   font-size: 0.8rem;
 }
 
-/* Hover effect for rows */
+.table-heading-time {
+  display: flex;
+  align-items: center;
+}
+
+.table-heading-time div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.table-filter {
+  width: 50px;
+  height: 20px;
+  /* margin: 0 auto; */
+  background-color: var(--text-color);
+  color: var(--basic-background);
+  border: solid 1px var(--basic-background);
+  border-radius: 5px;
+  font-family: var(--basic-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.filter-select {
+  display: inline-block;
+}
+
+.table-select {
+  width: 100px;
+  height: 20px;
+}
+
+.filter-value {
+  width: 80px;
+  height: 20px;
+  border: none;
+}
+
 .visa-table tbody tr:hover {
   background-color: #7a7c7d5c;
   transition: background-color 0.2s ease;

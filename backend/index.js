@@ -3,6 +3,7 @@ import demoData from "./demoData.js";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { v4 as createID } from "uuid";
+import validator from "./validator.js";
 
 const app = express();
 const port = 2000;
@@ -10,23 +11,41 @@ const port = 2000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// const visaData = demoData;
-
 app.get("/api/alerts", (req, res) => {
   try {
-    res.send(demoData);
+    const country = req.query.country;
+    const status = req.query.status;
+    let updatedData = [];
+    if (country) {
+      console.log(country);
+      let filteredData = demoData.filter((e) => {
+        return e.country.toLowerCase() == req.query.country.toLowerCase();
+      });
+      updatedData = filteredData;
+      console.log(updatedData);
+    } else if (status) {
+      let filteredData = demoData.filter((e) => {
+        return e.status.toLowerCase() == req.query.status.toLowerCase();
+      });
+      updatedData = filteredData;
+      console.log(updatedData);
+    } else {
+      updatedData = demoData;
+    }
+    res.status(200).send(updatedData);
   } catch (error) {
     res.send(error.message);
     console.log(error.message);
   }
 });
 
-app.post("/api/alerts", (req, res) => {
+app.post("/api/alerts", validator, (req, res) => {
   try {
     let visaData = req.body;
     visaData = { id: createID().substring(0, 8), ...visaData };
     demoData.push(visaData);
     console.log(demoData);
+    console.log("Data added");
     res.status(201).send(demoData);
   } catch (error) {
     res.send(error.message);
@@ -34,7 +53,7 @@ app.post("/api/alerts", (req, res) => {
   }
 });
 
-app.put("/api/alerts/:id", (req, res) => {
+app.put("/api/alerts/:id", validator, (req, res) => {
   try {
     const id = req.params.id;
     const updatedStatus = req.body;

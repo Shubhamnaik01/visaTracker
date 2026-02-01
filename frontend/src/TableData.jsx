@@ -11,13 +11,13 @@ const TableData = (props) => {
 
   async function handleSave() {
     try {
-      setEditStatus(!editStatus);
       const result = await baseURL.put("/alerts/" + data.id, { status });
       if (result.status == 200) {
         console.log("Update is successful");
+        setEditStatus(!editStatus);
       }
     } catch (error) {
-      console.log("Error While Updating :", error.message);
+      console.log("Error While Updating :", error.response.data.message);
     }
   }
 
@@ -42,6 +42,7 @@ const TableData = (props) => {
         {editStatus ? (
           <input
             type="text"
+            className="status-input"
             value={status}
             onChange={(e) => {
               setStatus(e.target.value);
@@ -50,17 +51,19 @@ const TableData = (props) => {
         ) : (
           <p>{status}</p>
         )}
-        {editStatus ? (
-          <button onClick={handleSave}>Save</button>
-        ) : (
-          <button
-            onClick={() => {
-              setEditStatus(!editStatus);
-            }}
-          >
-            Edit
-          </button>
-        )}
+        <div className="status-button-wrapper">
+          {editStatus ? (
+            <button onClick={handleSave}>Save</button>
+          ) : (
+            <button
+              onClick={() => {
+                setEditStatus(!editStatus);
+              }}
+            >
+              Edit
+            </button>
+          )}
+        </div>
       </td>
       <td>{data.type}</td>
       <td>
