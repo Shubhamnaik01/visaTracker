@@ -68,56 +68,62 @@ Each visa alert follows this structure:
 
 Backend :
 
-cd backend
-npm install
-npm run dev
+```
+- cd backend
+- npm install
+- npm run dev
+
+```
 
 Runs on http://localhost:2000
 
 Frontend :
 
-cd frontend
-npm install
-npm run dev
+```
+- cd frontend
+- npm install
+- npm run dev
+
+```
 
 Runs on http://localhost:5173
 
 ## Design Decisions
 
-Design Decisions
+### Design Decisions
 
-In-memory storage was used to keep the setup simple and focused on core logic
+- In-memory storage was used to keep the setup simple and focused on core logic
 
-HTML tables were used for clear and structured data display
+- HTML tables were used for clear and structured data display
 
-## Future Improvements
+### Future Improvements
 
-Add persistent database
+- Add persistent database
 
-Pagination for large datasets
+- Pagination for large datasets
 
-Suggestion based on country list in input
+- Suggestion based on country list in input
 
-Notification on alert creation, deletion
+- Notification on alert creation, deletion
 
-## Use of AI tool
+### Use of AI tool
 
-AI assisted with:
+- AI assisted with:
 
-Suggesting a simple and suitable color scheme for the UI
+- Suggesting a simple and suitable color scheme for the UI
 
-Understanding the concept and use of custom middleware in Express
+- Understanding the concept and use of custom middleware in Express
 
-Clarifying the overall request–response flow between frontend and backend
+- Clarifying the overall request–response flow between frontend and backend
 
-Creating readme
+- Creating readme
 
-Manual problem-solving included:
+### Manual problem-solving included:
 
-Passing handler functions from parent to child components
+- Passing handler functions from parent to child components
 
-Updating data in the parent component’s state based on actions triggered in child components
+- Updating data in the parent component’s state based on actions triggered in child components
 
-Error handling
+- Error handling
 
-Debugging data flow and state updates across components
+- Debugging data flow and state updates across components
