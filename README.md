@@ -74,7 +74,8 @@ Backend :
 - npm run dev
 ```
 
-Runs on http://localhost:2000
+Create a .env file and create a port varaiable and mention a port
+Runs on http://localhost:{port}
 
 Frontend :
 
