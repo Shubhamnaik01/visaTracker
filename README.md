@@ -72,7 +72,6 @@ Backend :
 - cd backend
 - npm install
 - npm run dev
-
 ```
 
 Runs on http://localhost:2000
@@ -83,7 +82,6 @@ Frontend :
 - cd frontend
 - npm install
 - npm run dev
-
 ```
 
 Runs on http://localhost:5173
@@ -104,17 +102,17 @@ Runs on http://localhost:5173
 
 - Suggestion based on country list in input
 
-- Notification on alert creation, deletion
+- Notification on alert creation, updation, deletion
 
-### Use of AI tool
+## Use of AI tool
 
-- AI assisted with:
+### AI assisted with:
 
 - Suggesting a simple and suitable color scheme for the UI
 
 - Understanding the concept and use of custom middleware in Express
 
-- Clarifying the overall request–response flow between frontend and backend
+- Error solving
 
 - Creating readme
 
@@ -126,4 +124,4 @@ Runs on http://localhost:5173
 
 - Error handling
 
-- Debugging data flow and state updates across components
+- Data flow and state updates across components
