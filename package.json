@@ -1,0 +1,21 @@
+{
+  "name": "visatracker",
+  "version": "1.0.0",
+  "description": "A mini full-stack internal tool built for **The Flying Panda** to track visa slot alerts.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix frontend && npm install --prefix backend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shubhamnaik01/visaTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shubhamnaik01/visaTracker/issues"
+  },
+  "homepage": "https://github.com/Shubhamnaik01/visaTracker#readme"
+}

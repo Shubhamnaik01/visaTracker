@@ -7,7 +7,7 @@ const VisaDetail = () => {
   const [filterStatus, setFilterStatus] = useState(false);
   const [filter, setFilter] = useState("");
   const [filterValue, setFilterValue] = useState("");
-  const [save, setSaveStatus] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   function removeItem(id) {
     const newData = visaData.filter((i) => i.id != id);
@@ -15,15 +15,24 @@ const VisaDetail = () => {
   }
 
   async function getAlerts(filter = "", filterValue = "") {
+    setLoading(true);
     try {
       let url = "/alerts";
       if (filter && filterValue) {
         url = url + `?${filter}=${filterValue}`;
       }
       const result = await baseURL.get(url);
-      setVisaData(result.data);
+      if (!Array.isArray(result.data)) {
+        setVisaData([]);
+        console.log(error + " While sending");
+      } else {
+        setVisaData(result.data);
+      }
     } catch (error) {
       console.log("Error While fetching alerts :", error.response.data.message);
+      setVisaData([]);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -34,7 +43,6 @@ const VisaDetail = () => {
   }
   function handleSave() {
     setFilterStatus(!filterStatus);
-    setSaveStatus(!save);
   }
 
   async function handleFilter() {
@@ -46,8 +54,10 @@ const VisaDetail = () => {
   }
 
   useEffect(() => {
-    getAlerts(filter, filterValue);
-  }, [save]);
+    if (filterStatus == false) {
+      getAlerts(filter, filterValue);
+    }
+  }, [filterStatus]);
 
   return (
     <div className="table-container">
@@ -99,11 +109,25 @@ const VisaDetail = () => {
           </tr>
         </thead>
         <tbody>
-          {visaData.map((e) => {
-            return (
-              <TableData key={e.id} visaData={e} deleteItem={removeItem} />
-            );
-          })}
+          {loading ? (
+            <tr>
+              <td>
+                <h2>Loading....</h2>
+              </td>
+            </tr>
+          ) : visaData.length > 0 ? (
+            visaData.map((e) => {
+              return (
+                <TableData key={e.id} visaData={e} deleteItem={removeItem} />
+              );
+            })
+          ) : (
+            <tr>
+              <td>
+                <h2>No Alerts</h2>
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

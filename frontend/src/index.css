@@ -168,14 +168,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* display: inline;
-  width: 100px; */
+  gap: 0.5rem;
 }
 
 .table-status-data button {
   width: 50px;
   height: 20px;
-  /* display: inline-block; */
   margin: auto 0;
   background-color: var(--basic-background);
   color: var(--text-color);
@@ -196,13 +194,19 @@
   align-items: center;
 }
 .table-time {
-  display: inline-block;
-  width: 50%;
+  width: 200px;
+  white-space: nowrap;
 }
 
 .table-delete-container {
-  display: inline-block;
-  width: 40%;
+  width: 100px;
+}
+
+.time-delete-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
 }
 
 .table-delete-container button {
@@ -210,7 +214,6 @@
   height: 20px;
   display: block;
   margin: 0 auto;
-  margin-bottom: 10px;
   background-color: var(--basic-background);
   color: var(--text-color);
   border: solid 1px var(--basic-background);
@@ -223,6 +226,7 @@
 .table-heading-time {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 .table-heading-time div {

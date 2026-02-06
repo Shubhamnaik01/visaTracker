@@ -5,15 +5,18 @@ import bodyParser from "body-parser";
 import { v4 as createID } from "uuid";
 import validator from "./validator.js";
 import dotenv from "dotenv";
-
-const app = express();
+import path from "path";
 
 dotenv.config();
+const app = express();
+const port = process.env.port;
+const __dirname = path.resolve();
 
-app.use(cors());
+if (process.env.NODE_ENV == "development") {
+  app.use(cors());
+}
 app.use(bodyParser.json());
 
-const port = process.env.port;
 app.get("/api/alerts", (req, res) => {
   try {
     const country = req.query.country;
@@ -91,6 +94,14 @@ app.delete("/api/alerts/:id", (req, res) => {
     console.log("Error while deleting alert", error.message);
   }
 });
+
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  app.get("/*splat", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+  });
+}
 
 app.listen(port, () => {
   console.log("Server running on port :", port);

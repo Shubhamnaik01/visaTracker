@@ -41,38 +41,42 @@ const TableData = (props) => {
       <td>{data.id}</td>
       <td>{data.country}</td>
       <td>{data.city}</td>
-      <td className="table-status-data">
-        {editStatus ? (
-          <input
-            type="text"
-            className="status-input"
-            value={status}
-            onChange={(e) => {
-              setStatus(e.target.value);
-            }}
-          ></input>
-        ) : (
-          <p>{status}</p>
-        )}
-        <div className="status-button-wrapper">
+      <td>
+        <div className="table-status-data">
           {editStatus ? (
-            <button onClick={handleSave}>Save</button>
-          ) : (
-            <button
-              onClick={() => {
-                setEditStatus(!editStatus);
+            <input
+              type="text"
+              className="status-input"
+              value={status}
+              onChange={(e) => {
+                setStatus(e.target.value);
               }}
-            >
-              Edit
-            </button>
+            ></input>
+          ) : (
+            <p>{status}</p>
           )}
+          <div className="status-button-wrapper">
+            {editStatus ? (
+              <button onClick={handleSave}>Save</button>
+            ) : (
+              <button
+                onClick={() => {
+                  setEditStatus(!editStatus);
+                }}
+              >
+                Edit
+              </button>
+            )}
+          </div>
         </div>
       </td>
       <td>{data.type}</td>
       <td>
-        <div className="table-time">{data.createdAt}</div>
-        <div className="table-delete-container">
-          <button onClick={handleDelete}>Delete</button>
+        <div className="time-delete-wrapper">
+          <div className="table-time">{data.createdAt}</div>
+          <div className="table-delete-container">
+            <button onClick={handleDelete}>Delete</button>
+          </div>
         </div>
       </td>
     </tr>
